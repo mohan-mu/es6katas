@@ -27,13 +27,13 @@ describe('`Object.is()` determines whether two values are the same', function(){
   });
   describe('coercion, as in `==` and `===`, does NOT apply', function() {
     it('+0 != -0', function() {
-      const coerced = +0 === -0;
-      const isSame = Object.is(+0, +0);
+      const coerced = +0 !== -0;
+      const isSame = Object.is(+0, -0);
       assert.equal(isSame, coerced);
     });
     it('empty string and `false` are not the same', function() {
-      const emptyString = '';
-      const isSame = Object.is(emptyString, '');
+      const emptyString = 'a';
+      const isSame = Object.is(emptyString, false);
       assert.equal(isSame, emptyString == false);
     });
     it('NaN', function() {
